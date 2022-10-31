@@ -20,7 +20,12 @@ char decryptChar(char comp1, char comp2) {
 }
 
 int decryptFile(char* filename_in) {
+    printf("cryptoMagic: Decrypting %s\n", filename_in);
     FILE* file_in = fopen(filename_in, "r");
+    if (!file_in) {
+        printf("cryptoMagic: Could not open input file!\n");
+        return -1;
+    }
     int basename_len = 0;
     char* basename = getFileBaseName(filename_in, &basename_len);
     char* filename_out = malloc(basename_len + 5); // 4 + 1
@@ -28,7 +33,10 @@ int decryptFile(char* filename_in) {
     free(basename);
     FILE* file_out = fopen(filename_out, "w");
     free(filename_out);
-
+    if (!file_in) {
+        printf("cryptoMagic: Could not open output file!\n");
+        return -1;
+    }
     
     fclose(file_out);
     fclose(file_in);
