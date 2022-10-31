@@ -40,6 +40,7 @@ int decryptFile(char* filename_in) {
     
     fclose(file_out);
     fclose(file_in);
+    return 0; // Success
 }
 
 #endif // DECRYPT_H

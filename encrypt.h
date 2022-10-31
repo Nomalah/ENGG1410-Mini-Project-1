@@ -25,7 +25,7 @@ int encryptFile(char* filename_in) {
     char* basename = getFileBaseName(filename_in, &basename_len);
     char* filename_out = malloc(basename_len + 5); // 4 + 1
     snprintf(filename_out, basename_len + 5, "%s%s", basename, ".crp");
-    printf("cryptoMagic: Encrypting to %s%s\n", filename_out);
+    printf("cryptoMagic: Encrypting to %s\n", filename_out);
     free(basename);
     FILE* file_out = fopen(filename_out, "w");
     free(filename_out);
