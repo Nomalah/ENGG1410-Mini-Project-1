@@ -14,8 +14,8 @@ char* getFileBaseName(char* path, int* length_out) {
         *length_out = end_str - dir_sep;
         return strndup(dir_sep, end_str - dir_sep);
     }
-    *length_out = end_str - ext_sep;
-    return strndup(dir_sep, end_str - ext_sep);
+    *length_out = ext_sep - dir_sep;
+    return strndup(dir_sep, ext_sep - dir_sep);
 }
 
 
