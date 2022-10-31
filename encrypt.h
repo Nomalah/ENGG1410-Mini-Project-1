@@ -24,7 +24,8 @@ int encryptFile(char* filename_in) {
     int basename_len = 0;
     char* basename = getFileBaseName(filename_in, &basename_len);
     char* filename_out = malloc(basename_len + 5); // 4 + 1
-    snprintf(filename_out, basename_len, "%s%s", basename, ".txt");
+    snprintf(filename_out, basename_len + 5, "%s%s", basename, ".crp");
+    printf("cryptoMagic: Encrypting to %s%s\n", filename_out);
     free(basename);
     FILE* file_out = fopen(filename_out, "w");
     free(filename_out);
@@ -33,8 +34,21 @@ int encryptFile(char* filename_in) {
         return -1;
     }
 
+    char c = 0;
+    while ((c = fgetc(file_in)) != EOF) {
+        if (c == '\t') {
+            fprintf(file_out, "TT");
+        } else if (c == '\n') {
+            fprintf(file_out, "\n");
+        } else {
+            fprintf(file_out, "%X", encryptChar(c));
+        }
+    }
+
     fclose(file_out);
     fclose(file_in);
+    printf("cryptoMagic: Successfully encrypted\n");
+    return 0; // Success
 }
 
 #endif // ENCRYPT_H
