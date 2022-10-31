@@ -1,3 +1,4 @@
 To compile:
 ```
-gcc main.c encrypt.c decrypt.c -Wall -Wextra
+gcc main.c encrypt.c decrypt.c strtools.c -Wall -Wextra
+```
