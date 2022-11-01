@@ -44,9 +44,9 @@ int encryptFile(char *filename_in)
         {
             fprintf(file_out, "TT");
         }
-        else if (c == '\n')
+        else if (c == '\n' || c == '\r')
         {
-            fprintf(file_out, "\n");
+            fprintf(file_out, "%c", c);
         }
         else
         {

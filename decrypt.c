@@ -46,13 +46,13 @@ int decryptFile(char *filename_in)
     char c1, c2;
     while ((c1 = fgetc(file_in)) != EOF)
     {
-        if (c1 != '\n')
+        if (c1 != '\n' && c1 != '\r')
         {
             c2 = fgetc(file_in);
             fprintf(file_out, "%c", decryptChar(c1, c2));
             continue;
         }
-        fprintf(file_out, "\n");
+        fprintf(file_out, "%c", c1);
     }
 
     fclose(file_out);
