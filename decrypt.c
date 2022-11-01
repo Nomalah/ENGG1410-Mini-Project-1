@@ -34,6 +34,7 @@ int decryptFile(char *filename_in)
     char *basename = getFileBaseName(filename_in, &basename_len);
     char *filename_out = malloc(basename_len + 5); // 4 + 1
     snprintf(filename_out, basename_len + 5, "%s%s", basename, ".txt");
+    printf("cryptoMagic: Decrypting to %s\n", filename_out);
     free(basename);
     FILE *file_out = fopen(filename_out, "w");
     free(filename_out);
@@ -57,5 +58,6 @@ int decryptFile(char *filename_in)
 
     fclose(file_out);
     fclose(file_in);
+    printf("cryptoMagic: Successfully decrypted\n");
     return 0; // Success
 }
