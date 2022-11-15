@@ -1,0 +1,17 @@
+graph TB
+    A[Open Input File] --> B{Did the file open}
+    B --Yes--> F[Get the base name of the file\nand the new encrypted file name]
+    B --No--> D[Return]
+    F --> G[Open new file with new name]
+    G --> H{Did the file open}
+    H --Yes--> I[While c is assigned to the next character in the file\nand the next character is not a newline]
+    H --No--> J[Return]
+    I --> J{If c is a tab}
+    J --Then--> K[Print TT to the output file]
+    J --Else--> L{If c is a carriage return}
+    L --Then--> M[Print out the return character to the output file]
+    L --Else--> N[Print out an encrypted hexadecimal character]
+    K & M & N --Line is not EOF--> H
+    K & M & N --Line is EOF--> O[Close input and output files]
+    O --> P[Print that file was successfully encrypted]
+    P --> Q[Return]

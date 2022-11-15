@@ -31,7 +31,7 @@ int encryptFile(char *filename_in)
     free(basename);
     FILE *file_out = fopen(filename_out, "w");
     free(filename_out);
-    if (!file_in)
+    if (!file_out)
     {
         printf("cryptoMagic: Could not open output file!\n");
         return -1;

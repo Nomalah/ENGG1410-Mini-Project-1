@@ -1,0 +1,6 @@
+graph TB
+    A[Validate flags passed\nand assign filename]
+    A --> B{Check whether file is to be encrypted or decrypted}
+    B --If encrypting--> C[Encrypt the file using previously defined methods\nand return the status]
+    B --If decrypting--> D[Decrypt the file using previously defined methods\nand return the status]
+    B --Else--> E[Return the value being checked]

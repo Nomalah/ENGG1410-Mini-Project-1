@@ -1,0 +1,13 @@
+graph TB
+    A[Open Input File] --> B{Did the file open}
+    B --Yes--> F[Get the base name of the file\nand the new encrypted file name]
+    B --No--> D[Return]
+    F --> G[Open new file with new name]
+    G --> H{Did the file open}
+    H --Yes--> I[While c1 is assigned to the next character in the file\nand the next character is not a newline]
+    H --No--> J[Return]
+    I --> K{If c1 is not a carriage return}
+    K --Then--> L[Assign c2 to the second character of the hexadecimal pair]
+    L --> M[Output the decrypted character from the hexadecimal to the output file]
+    M --> N[Continue]
+    K --Else--> O[Print out the regular character to the file\nif the statement did not continue]

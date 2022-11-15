@@ -1,0 +1,9 @@
+graph TB
+    A[Read inputted characters]
+    A --> B[If first character is equal to T\nand second character is equal to T]
+    B --Then--> C[Return \t]
+    B --Else--> D[Multiply the value of the first character by 16\nand add the value of the second character]
+    D --> E[Add 16 to this value]
+    E --> F{If the resolved value is more than 127}
+    F --Then--> G[Return the resolved value minus 144 plus 32]
+    F --Else--> H[Return the resolved value]

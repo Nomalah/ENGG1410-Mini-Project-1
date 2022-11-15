@@ -1,0 +1,5 @@
+graph TB
+    A[Read inputted character]
+    A --Decrease character value by 16-->B{If the value is less than 32}
+    B --Then--> C[Decrease the value by 32 and add 144\nReturn this value]
+    B --Else--> D[Return the value] 
